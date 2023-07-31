@@ -1,6 +1,7 @@
 package com.exemplo.starterkit.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @AllArgsConstructor
@@ -13,11 +14,17 @@ import lombok.*;
 public class User {
 
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
     private Integer age;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private Integer cep;
 }
