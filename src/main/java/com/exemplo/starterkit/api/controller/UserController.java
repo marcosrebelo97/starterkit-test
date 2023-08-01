@@ -1,5 +1,6 @@
 package com.exemplo.starterkit.api.controller;
 
+import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
 import com.exemplo.starterkit.domain.service.UserService;
@@ -35,5 +36,11 @@ public class UserController {
     public ResponseEntity<User> searchUserId (@PathVariable Long id){
         User user = userService.searchUserId(id);
         return ResponseEntity.ok().body(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
