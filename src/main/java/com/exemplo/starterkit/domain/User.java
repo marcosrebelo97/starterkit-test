@@ -1,4 +1,4 @@
-package com.exemplo.starterkit.domain.model;
+package com.exemplo.starterkit.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -26,4 +26,11 @@ public class User {
     @NotBlank
     private String city;
     private Integer cep;
+
+    public User(String name, Integer age, String city, Integer cep){
+        this.name = name;
+        this.age = age;
+        this.city = city;
+        this.cep = cep;
+    }
 }

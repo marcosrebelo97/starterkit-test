@@ -1,7 +1,7 @@
 package com.exemplo.starterkit.domain.service;
 
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
-import com.exemplo.starterkit.domain.model.User;
+import com.exemplo.starterkit.domain.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
