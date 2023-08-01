@@ -3,7 +3,7 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 ### Objetivo:
-  - A principal finalidade deste repositório é fornecer um ambiente de aprendizado e prática para desenvolvedores interessados em melhorar suas habilidades na criação de **Testes Unitários** em API's desenvolvidas em Java utilizando Spring Boot.
+  - A principal finalidade deste repositório é fornecer um ambiente de aprendizado e prática para desenvolvedores interessados em melhorar suas habilidades na criação de **Testes Unitários** em API's desenvolvidas em Java com Spring Boot.
 
 ### Descrição da API:
   - A API desenvolvida neste projeto é uma aplicação simples que gerencia recursos através de operações CRUD. Foi construída utilizando Java e Spring Boot.
@@ -40,7 +40,12 @@
           git push origin minha-feature
        ```
      
-  9. Abra um Pull Request para este repositório
+  9. Abra um Pull Request para este repositório, descrevendo suas altrações e explicando o motivo da contribuição.
+
+### Material de Apoio:
+  - [Documentação do JUnit](https://junit.org/junit5/docs/current/user-guide/)
+  - [Documentação do Mockito](https://site.mockito.org/)
+  - [Spring Boot Test - Documentação Oficial](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing)
 
 ### Licença:
   - Este projeto está licenciado sob a [MIT License](https://opensource.org/license/mit/). 
