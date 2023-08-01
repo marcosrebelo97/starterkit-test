@@ -2,6 +2,7 @@ package com.exemplo.starterkit.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @AllArgsConstructor
@@ -24,7 +25,5 @@ public class User {
 
     @NotBlank
     private String city;
-
-    @NotBlank
     private Integer cep;
 }

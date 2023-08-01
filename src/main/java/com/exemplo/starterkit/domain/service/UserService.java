@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -19,9 +18,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> create(User user){
-        userRepository.save(user);
-        return list();
+    public User create(User user){
+        return userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
@@ -36,6 +34,16 @@ public class UserService {
             throw new UserNotFoundException();
         }
         userRepository.deleteById(id);
+    }
+
+    public User update(Long id, User user){
+        userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException());
+        user.getName();
+        user.getAge();
+        user.getCity();
+        user.getCep();
+        return userRepository.save(user);
     }
 }
 
