@@ -1,6 +1,6 @@
 package com.exemplo.starterkit.api.controller;
 
-import com.exemplo.starterkit.domain.User;
+import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create (@RequestBody @Valid User user){
+    public ResponseEntity<User> createUser (@RequestBody @Valid User user){
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(userService.create(user));
+                .body(userService.createUser(user));
     }
 
     @GetMapping("/{id}")
@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody @Valid User user){
+    public ResponseEntity<User> update (@PathVariable Long id, @RequestBody @Valid User user){
         return new ResponseEntity<User>(userService.update(id, user), HttpStatus.OK);
     }
 
