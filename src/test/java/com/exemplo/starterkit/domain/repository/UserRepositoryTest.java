@@ -14,7 +14,6 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-
     @Test
     void testSaveUser(){
         //Given

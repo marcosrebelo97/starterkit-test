@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +19,7 @@ import static org.mockito.Mockito.when;
 
 @DataJpaTest
 class UserServiceTest {
-
-
+    
     @InjectMocks
     private UserService userService;
 
@@ -71,7 +71,20 @@ class UserServiceTest {
         }
     }
     @Test
-    void list() {
+    void whenFindAll_Then_ReturnListOfUsers() {
+        when(userRepository.findAll()).thenReturn(List.of(user));
+
+        List<User> response = userService.list();
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(User.class, response.get(0).getClass());
+
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(NAME, response.get(0).getName());
+        assertEquals(AGE, response.get(0).getAge());
+        assertEquals(CITY, response.get(0).getCity());
+        assertEquals(CEP, response.get(0).getCep());
     }
 
     @Test
