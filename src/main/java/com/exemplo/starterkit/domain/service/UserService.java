@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -24,21 +25,21 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User searchUserId(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException());
+        Optional<User> userOptional = userRepository.findById(id);
+        return userOptional.orElseThrow(() -> new UserNotFoundException("Não encontrado"));
     }
 
     public void deleteUser(Long id){
         User user = userRepository.getUserById(id);
         if (user == null){
-            throw new UserNotFoundException();
+            throw new UserNotFoundException("Não encontrado");
         }
         userRepository.deleteById(id);
     }
 
     public User update(Long id, User user){
         userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(() -> new UserNotFoundException("Não encontrado"));
         user.getName();
         user.getAge();
         user.getCity();
