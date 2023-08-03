@@ -2,6 +2,7 @@ package com.exemplo.starterkit.domain.service;
 
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -59,6 +60,16 @@ class UserServiceTest {
         assertEquals(CEP, response.getCep());
     }
 
+    @Test
+    void whenFindById_Then_ReturnUserNotFound(){
+        when(userRepository.findById(Mockito.anyLong())).thenReturn(null);
+
+        try{
+            userService.searchUserId(ID);
+        } catch (Exception ex){
+            assertEquals(NullPointerException.class, ex.getClass());
+        }
+    }
     @Test
     void list() {
     }
