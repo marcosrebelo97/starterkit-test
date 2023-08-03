@@ -88,7 +88,18 @@ class UserServiceTest {
     }
 
     @Test
-    void createUser() {
+    void whenCreate_Then_ReturnSucess() {
+        when(userRepository.save(Mockito.any())).thenReturn(user);
+
+        User response = userService.createUser(user);
+
+        assertNotNull(response);
+        assertEquals(User.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(AGE, response.getAge());
+        assertEquals(CITY, response.getCity());
+        assertEquals(CEP, response.getCep());
     }
 
     @Test
