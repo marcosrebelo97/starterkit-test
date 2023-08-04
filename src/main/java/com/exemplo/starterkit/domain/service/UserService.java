@@ -1,6 +1,7 @@
 package com.exemplo.starterkit.domain.service;
 
 import com.exemplo.starterkit.api.dto.UserDTO;
+import com.exemplo.starterkit.domain.exception.DataIntegratyViolationException;
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
@@ -26,8 +27,9 @@ public class UserService {
     }
 
     public User createUser (UserDTO userdto){
-        User user = new User(userdto);
-        return userRepository.save(user);
+        //User user = new User(userdto);
+        findByEmail(userdto);
+        return userRepository.save(modelMapper.map(userdto, User.class));
     }
 
     @Transactional(readOnly = true)
@@ -53,6 +55,13 @@ public class UserService {
         user.setCity(userDTO.getCity());
         user.setCep(userDTO.getCep());
         return userRepository.save(user);
+    }
+
+    private void findByEmail(UserDTO userDTO){
+        Optional<User> user = userRepository.findByEmail(userDTO.getEmail());
+        if(user.isPresent()){
+            throw new DataIntegratyViolationException("E-mail já cadastrado!");
+        }
     }
 }
 
