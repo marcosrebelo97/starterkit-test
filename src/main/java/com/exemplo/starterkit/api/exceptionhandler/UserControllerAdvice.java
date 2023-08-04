@@ -16,7 +16,7 @@ public class UserControllerAdvice {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<MessageExceptionHandler> userNotFound(UserNotFoundException userNotFoundException) {
         MessageExceptionHandler error = new MessageExceptionHandler(
-                new Date(), HttpStatus.NOT_FOUND.value(), "Um dos campos estão inválidos. Reveja o preenchimento dos dados!");
+                new Date(), HttpStatus.NOT_FOUND.value(), "Usuário não encontrado!");
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 

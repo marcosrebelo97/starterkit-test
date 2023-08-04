@@ -35,20 +35,17 @@ public class UserService {
     @Transactional(readOnly = true)
     public User searchUserId(Long id) {
         Optional<User> userOptional = userRepository.findById(id);
-        return userOptional.orElseThrow(() -> new UserNotFoundException("Não encontrado"));
+        return userOptional.orElseThrow(() -> new UserNotFoundException("Usuário não encontrado!"));
     }
 
     public void deleteUser(Long id){
-        User user = userRepository.getUserById(id);
-        if (user == null){
-            throw new UserNotFoundException("Não encontrado");
-        }
+        searchUserId(id);
         userRepository.deleteById(id);
     }
 
     public User update(Long id, UserDTO userDTO){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Não encontrado"));
+                .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado!"));
         user.setName(userDTO.getName());
         user.setAge(userDTO.getAge());
         user.setEmail(userDTO.getEmail());

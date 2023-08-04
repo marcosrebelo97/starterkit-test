@@ -42,13 +42,14 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> searchUserId (@PathVariable Long id){
-        return ResponseEntity.ok().body(modelMapper.map(userService.searchUserId(id), UserDTO.class));
+        return ResponseEntity.ok().
+                body(modelMapper.map(userService.searchUserId(id), UserDTO.class));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
