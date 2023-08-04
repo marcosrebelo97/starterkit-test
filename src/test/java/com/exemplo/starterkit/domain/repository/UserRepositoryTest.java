@@ -17,7 +17,7 @@ class UserRepositoryTest {
     @Test
     void testSaveUser(){
         //Given
-        User user = new User("Marcos", 25, "Manaus", 69077769);
+        User user = new User("Marcos", 25, "marcos@gmail.com", "Manaus", 69077769);
 
         //When
         User savedUser = userRepository.save(user);

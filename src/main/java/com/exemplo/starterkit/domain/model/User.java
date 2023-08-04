@@ -24,12 +24,16 @@ public class User {
     private Integer age;
 
     @NotBlank
+    private String email;
+
+    @NotBlank
     private String city;
     private Integer cep;
 
-    public User(String name, Integer age, String city, Integer cep){
+    public User(String name, Integer age, String email, String city, Integer cep){
         this.name = name;
         this.age = age;
+        this.email = email;
         this.city = city;
         this.cep = cep;
     }

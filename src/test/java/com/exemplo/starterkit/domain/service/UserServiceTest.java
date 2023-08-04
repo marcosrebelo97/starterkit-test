@@ -19,7 +19,9 @@ import static org.mockito.Mockito.when;
 
 @DataJpaTest
 class UserServiceTest {
-    
+
+    //FALTA CHECKAR O EMAIL
+
     @InjectMocks
     private UserService userService;
 
@@ -29,6 +31,7 @@ class UserServiceTest {
     private User user;
     private Optional<User> userOptional;
     public static final String NAME = "Marcos";
+    public static final String EMAIL = "marcos@gmail.com";
     public static final String CITY = "Manaus";
     public static final int CEP = 69077769;
     public static final int AGE = 25;
@@ -42,8 +45,8 @@ class UserServiceTest {
 
     @Test
     void startUser(){
-        user = new User(ID, NAME, AGE, CITY, CEP);
-        userOptional = Optional.of(new User(ID, NAME, AGE, CITY, CEP));
+        user = new User(ID, NAME, AGE, EMAIL, CITY, CEP);
+        userOptional = Optional.of(new User(ID, NAME, AGE, EMAIL, CITY, CEP));
     }
     @Test
     void whenFindById_Then_ReturnUserInstance() {
