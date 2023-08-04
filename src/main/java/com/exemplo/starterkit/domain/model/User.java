@@ -1,5 +1,6 @@
 package com.exemplo.starterkit.domain.model;
 
+import com.exemplo.starterkit.api.dto.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -30,6 +31,15 @@ public class User {
     private String city;
     private Integer cep;
 
+    public User(UserDTO newUser) {
+        name = newUser.getName();
+        age = newUser.getAge();
+        email = newUser.getEmail();
+        city = newUser.getCity();
+        cep = newUser.getCep();
+    }
+
+    //for test
     public User(String name, Integer age, String email, String city, Integer cep){
         this.name = name;
         this.age = age;
@@ -37,4 +47,6 @@ public class User {
         this.city = city;
         this.cep = cep;
     }
+
+
 }

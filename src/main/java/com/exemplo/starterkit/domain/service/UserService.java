@@ -1,9 +1,12 @@
 package com.exemplo.starterkit.domain.service;
 
+import com.exemplo.starterkit.api.dto.UserDTO;
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -13,13 +16,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     private UserRepository userRepository;
 
-    public List<User> list() {
-        return userRepository.findAll();
+    public List<UserDTO> list() {
+        return userRepository.findAll().stream().map(UserDTO::new).toList();
     }
 
-    public User createUser (User user){
+    public User createUser (UserDTO userdto){
+        User user = new User(userdto);
         return userRepository.save(user);
     }
 
@@ -37,13 +44,14 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User update(Long id, User user){
-        userRepository.findById(id)
+    public User update(Long id, UserDTO userDTO){
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Não encontrado"));
-        user.getName();
-        user.getAge();
-        user.getCity();
-        user.getCep();
+        user.setName(userDTO.getName());
+        user.setAge(userDTO.getAge());
+        user.setEmail(userDTO.getEmail());
+        user.setCity(userDTO.getCity());
+        user.setCep(userDTO.getCep());
         return userRepository.save(user);
     }
 }

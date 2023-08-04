@@ -1,5 +1,6 @@
 package com.exemplo.starterkit.domain.service;
 
+import com.exemplo.starterkit.api.dto.UserDTO;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -29,6 +30,7 @@ class UserServiceTest {
     private UserRepository userRepository;
 
     private User user;
+    private UserDTO userDTO;
     private Optional<User> userOptional;
     public static final String NAME = "Marcos";
     public static final String EMAIL = "marcos@gmail.com";
@@ -46,6 +48,7 @@ class UserServiceTest {
     @Test
     void startUser(){
         user = new User(ID, NAME, AGE, EMAIL, CITY, CEP);
+        userDTO = new UserDTO(ID, NAME, AGE, EMAIL, CITY, CEP);
         userOptional = Optional.of(new User(ID, NAME, AGE, EMAIL, CITY, CEP));
     }
     @Test
@@ -77,7 +80,7 @@ class UserServiceTest {
     void whenFindAll_Then_ReturnListOfUsers() {
         when(userRepository.findAll()).thenReturn(List.of(user));
 
-        List<User> response = userService.list();
+        List<UserDTO> response = userService.list();
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -94,7 +97,7 @@ class UserServiceTest {
     void whenCreate_Then_ReturnSucess() {
         when(userRepository.save(Mockito.any())).thenReturn(user);
 
-        User response = userService.createUser(user);
+        User response = userService.createUser(userDTO);
 
         assertNotNull(response);
         assertEquals(User.class, response.getClass());
