@@ -1,6 +1,7 @@
 package com.exemplo.starterkit.domain.service;
 
 import com.exemplo.starterkit.api.dto.UserDTO;
+import com.exemplo.starterkit.domain.exception.DataIntegratyViolationException;
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -111,6 +113,19 @@ class UserServiceTest {
     }
 
     @Test
+    void whenCreate_Then_ReturnDataIntegrityViolationException() {
+        when(userRepository.findByEmail(Mockito.anyString())).thenReturn(userOptional);
+
+        try{
+            userOptional.get().setId(2L);
+            userService.createUser(userDTO);
+        } catch (Exception e){
+            assertEquals(DataIntegratyViolationException.class, e.getClass());
+            assertEquals("E-mail já cadastrado!", e.getMessage());
+        }
+    }
+
+    @Test
     void whenUpdate_Then_ReturnSucess() {
         when(userRepository.save(Mockito.any())).thenReturn(user);
 
@@ -123,6 +138,7 @@ class UserServiceTest {
         assertEquals(AGE, response.getAge());
         assertEquals(CITY, response.getCity());
         assertEquals(CEP, response.getCep());
+
     }
 
 }
