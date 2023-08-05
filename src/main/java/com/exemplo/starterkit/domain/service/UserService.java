@@ -23,8 +23,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDTO> list() {
-        return userRepository.findAll().stream().map(UserDTO::new).toList();
+    public List<User> list() {
+        return userRepository.findAll();
     }
 
     public User createUser (UserDTO userdto){
@@ -43,20 +43,21 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User update(Long id, UserDTO userDTO){
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado!"));
+    public User update(UserDTO userDTO){
+        findByEmail(userDTO);
+        User user = new User();
         user.setName(userDTO.getName());
         user.setAge(userDTO.getAge());
         user.setEmail(userDTO.getEmail());
         user.setCity(userDTO.getCity());
         user.setCep(userDTO.getCep());
+
         return userRepository.save(user);
     }
 
     private void findByEmail(UserDTO userDTO){
         Optional<User> user = userRepository.findByEmail(userDTO.getEmail());
-        if(user.isPresent()){
+        if(user.isPresent() && !user.get().getId().equals(userDTO.getId())){
             throw new DataIntegratyViolationException("E-mail já cadastrado!");
         }
     }

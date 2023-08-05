@@ -28,10 +28,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> list (){
-        List<UserDTO> userDTOList = userService.list();
-        return ResponseEntity.ok().body(userDTOList);
-        //return ResponseEntity.ok().body(Collections.singletonList(modelMapper.map(userService.list(), UserDTO.class)));
+    public List<User> list (){
+        return userService.list();
     }
 
     @PostMapping
@@ -53,8 +51,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update (@PathVariable Long id, @RequestBody @Valid UserDTO userDTO){
-        return new ResponseEntity<User>(userService.update(id, userDTO), HttpStatus.OK);
+    public ResponseEntity<UserDTO> update ( @RequestBody @Valid UserDTO userDTO, @PathVariable Long id){
+        return ResponseEntity.ok().body(modelMapper.map(userService.update(userDTO), UserDTO.class));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.exemplo.starterkit.domain.service;
 
 import com.exemplo.starterkit.api.dto.UserDTO;
+import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -68,20 +69,20 @@ class UserServiceTest {
     }
 
     @Test
-    void whenFindById_Then_ReturnUserNotFound(){
-        when(userRepository.findById(Mockito.anyLong())).thenReturn(null);
+    void whenFindById_Then_ReturnUserNotFound() {
+        when(userRepository.findById(Mockito.anyLong())).thenThrow(new UserNotFoundException("Usuário não encontrado!"));
 
         try{
             userService.searchUserId(ID);
         } catch (Exception ex){
-            assertEquals(NullPointerException.class, ex.getClass());
+            assertEquals(UserNotFoundException.class, ex.getClass());
         }
     }
     @Test
     void whenFindAll_Then_ReturnListOfUsers() {
         when(userRepository.findAll()).thenReturn(List.of(user));
 
-        List<UserDTO> response = userService.list();
+        List<User> response = userService.list();
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -110,10 +111,18 @@ class UserServiceTest {
     }
 
     @Test
-    void deleteUser() {
+    void whenUpdate_Then_ReturnSucess() {
+        when(userRepository.save(Mockito.any())).thenReturn(user);
+
+        User response = userService.update(userDTO);
+
+        assertNotNull(response);
+        assertEquals(User.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(AGE, response.getAge());
+        assertEquals(CITY, response.getCity());
+        assertEquals(CEP, response.getCep());
     }
 
-    @Test
-    void update() {
-    }
 }
