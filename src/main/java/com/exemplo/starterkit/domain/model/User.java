@@ -1,9 +1,7 @@
 package com.exemplo.starterkit.domain.model;
 
-import com.exemplo.starterkit.api.dto.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @AllArgsConstructor
@@ -25,19 +23,20 @@ public class User {
     private Integer age;
 
     @NotBlank
+    @Column(unique = true)
     private String email;
 
     @NotBlank
     private String city;
     private Integer cep;
 
-    public User(UserDTO newUser) {
+    /*public User(UserDTO newUser) {
         name = newUser.getName();
         age = newUser.getAge();
         email = newUser.getEmail();
         city = newUser.getCity();
         cep = newUser.getCep();
-    }
+    }*/
 
     //for test
     public User(String name, Integer age, String email, String city, Integer cep){

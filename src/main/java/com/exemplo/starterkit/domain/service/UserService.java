@@ -20,6 +20,7 @@ public class UserService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
     private UserRepository userRepository;
 
     public List<UserDTO> list() {
@@ -27,7 +28,6 @@ public class UserService {
     }
 
     public User createUser (UserDTO userdto){
-        //User user = new User(userdto);
         findByEmail(userdto);
         return userRepository.save(modelMapper.map(userdto, User.class));
     }
