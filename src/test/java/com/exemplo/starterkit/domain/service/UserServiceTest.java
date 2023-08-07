@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 @DataJpaTest
 class UserServiceTest {
@@ -150,6 +151,16 @@ class UserServiceTest {
             assertEquals(DataIntegratyViolationException.class, e.getClass());
             assertEquals("E-mail já cadastrado!", e.getMessage());
         }
+    }
+
+    @Test
+    void deleteWithSuccess(){
+        when(userRepository.findById(Mockito.anyLong())).thenReturn(userOptional);
+        doNothing().when(userRepository).deleteById(anyLong());
+
+        userService.deleteUser(ID);
+
+        verify(userRepository, times(1)).deleteById(anyLong());
     }
 
 }
