@@ -163,4 +163,16 @@ class UserServiceTest {
         verify(userRepository, times(1)).deleteById(anyLong());
     }
 
+    @Test
+    void deleteWithObjectNotFoundException(){
+        when(userRepository.findById(anyLong()))
+                .thenThrow(new UserNotFoundException("Usuário não encontrado!"));
+        try{
+            userService.deleteUser(ID);
+        } catch (Exception exception){
+            assertEquals(UserNotFoundException.class, exception.getClass());
+            //assertEquals("Usuário não encontrado!", exception.getMessage());
+        }
+    }
+
 }
