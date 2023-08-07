@@ -7,13 +7,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @DataJpaTest
 class UserControllerTest {
@@ -47,6 +52,26 @@ class UserControllerTest {
         user = new User(ID, NAME, AGE, EMAIL, CITY, CEP);
         userDTO = new UserDTO(ID, NAME, AGE, EMAIL, CITY, CEP);
         //userOptional = Optional.of(new User(ID, NAME, AGE, EMAIL, CITY, CEP));
+    }
+
+    @Test
+    void whenFindById_ReturnSucess(){
+        when(userService.searchUserId(Mockito.anyLong())).thenReturn(user);
+        when(modelMapper.map(any(), any())).thenReturn(userDTO);
+
+        ResponseEntity<UserDTO> response = userController.searchUserId(ID);
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(UserDTO.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NAME, response.getBody().getName());
+        assertEquals(AGE, response.getBody().getAge());
+        assertEquals(EMAIL, response.getBody().getEmail());
+        assertEquals(CITY, response.getBody().getCity());
+        assertEquals(CEP, response.getBody().getCep());
     }
 
 }
