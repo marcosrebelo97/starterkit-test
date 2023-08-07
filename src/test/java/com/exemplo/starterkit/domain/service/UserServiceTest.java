@@ -32,8 +32,6 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private ModelMapper modelMapper;
     private User user;
     private UserDTO userDTO;
     private Optional<User> userOptional;
