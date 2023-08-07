@@ -138,7 +138,6 @@ class UserServiceTest {
         assertEquals(AGE, response.getAge());
         assertEquals(CITY, response.getCity());
         assertEquals(CEP, response.getCep());
-
     }
 
 }
