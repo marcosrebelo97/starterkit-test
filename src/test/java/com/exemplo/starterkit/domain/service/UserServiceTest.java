@@ -139,5 +139,17 @@ class UserServiceTest {
         assertEquals(CITY, response.getCity());
         assertEquals(CEP, response.getCep());
     }
+    @Test
+    void whenUpdate_Then_ReturnDataIntegrityViolationException() {
+        when(userRepository.findByEmail(Mockito.anyString())).thenReturn(userOptional);
+
+        try{
+            userOptional.get().setId(2L);
+            userService.update(userDTO);
+        } catch (Exception e){
+            assertEquals(DataIntegratyViolationException.class, e.getClass());
+            assertEquals("E-mail já cadastrado!", e.getMessage());
+        }
+    }
 
 }
