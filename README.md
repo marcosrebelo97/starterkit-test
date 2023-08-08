@@ -16,6 +16,10 @@
     | GET   | /users/{id}     | Retorna dados de um usuário específico por ID |
     | DELETE | /users/{id}    | Remove um usuário específico por ID |
     | PUT   | /users/{id}     | Atualiza dados de um usuário específico por ID |
+
+    #### Todos os endpoints estão disponíveis para testes, feedbacks e afins. Clique no botão abaixo para abrir no Postman.
+
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://gold-eclipse-442776.postman.co/collection/19986209-8cf60a5b-66d7-4d0d-a0e3-9762c45b0b60?source=rip_markdown)
         
 ### Contribuindo:
   - Se você tiver algum feedback, melhorias possíveis, correção de bugs ou deseja adicionar novos testes, sinta-se à vontade para contribuir com este projeto. Siga os passos para contribuir.
