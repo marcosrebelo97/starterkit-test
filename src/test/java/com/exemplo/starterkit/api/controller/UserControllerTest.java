@@ -11,8 +11,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,6 +75,29 @@ class UserControllerTest {
         assertEquals(EMAIL, response.getBody().getEmail());
         assertEquals(CITY, response.getBody().getCity());
         assertEquals(CEP, response.getBody().getCep());
+    }
+
+    @Test
+    void whenFindAll_Then_ReturnListOfUserDTO(){
+        when(userService.list()).thenReturn(List.of(user));
+
+        when(modelMapper.map(any(), any())).thenReturn(userDTO);
+
+        ResponseEntity<List<UserDTO>> response = userController.list();
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(ArrayList.class, response.getBody().getClass());
+        assertEquals(UserDTO.class, response.getBody().get(0).getClass());
+
+        assertEquals(ID, response.getBody().get(0).getId());
+        assertEquals(NAME, response.getBody().get(0).getName());
+        assertEquals(AGE, response.getBody().get(0).getAge());
+        assertEquals(EMAIL, response.getBody().get(0).getEmail());
+        assertEquals(CITY, response.getBody().get(0).getCity());
+        assertEquals(CEP, response.getBody().get(0).getCep());
     }
 
 }

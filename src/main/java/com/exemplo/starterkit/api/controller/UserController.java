@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/users")
@@ -28,8 +29,9 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> list (){
-        return userService.list();
+    public ResponseEntity<List<UserDTO>> list (){
+        return ResponseEntity.ok().body(userService.list()
+                .stream().map(x -> modelMapper.map(x, UserDTO.class)).collect(Collectors.toList()));
     }
 
     @PostMapping
