@@ -1,1 +1,8 @@
-target/
+# Pasta de compilação
+/target/
+
+#Arquivos gerados pela IDE
+.idea/
+
+#Dependências geradas pelo Maven
+*.jar
