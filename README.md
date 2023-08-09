@@ -20,7 +20,13 @@
     #### Todos os endpoints estão disponíveis para testes, feedbacks e afins. Clique no botão abaixo para abrir no Postman.
 
     [![Run in Postman](https://run.pstmn.io/button.svg)](https://gold-eclipse-442776.postman.co/collection/19986209-8cf60a5b-66d7-4d0d-a0e3-9762c45b0b60?source=rip_markdown)
-        
+
+### Cobertura de Código:
+  - Nesta etapa foi utilizado o **[Jacoco](https://www.eclemma.org/jacoco/)**, que gera relatórios detalhados que mostram a porcentagem de cobertura de código para diferentes partes do projeto, como classes, métodos e linhas de código. No plugin adicionado no arquivo `pom.xml` pode ser definido o limite de porcentagem a ser atingido pelo código.
+  - No caso abaixo, as classes dos pacotes Model e DTO não atingiram o limite por conta das anotações @ feitas no código que complementam outras etapas (endpoints) importantes, por exemplo construtores vazios, setters e outros.
+
+    ![image](https://github.com/marcosrebelo97/starterkit-test/assets/37541973/4483fb5d-f047-4699-ac2e-98835571a972)
+
 ### Contribuindo:
   - Se você tiver algum feedback, melhorias possíveis, correção de bugs ou deseja adicionar novos testes, sinta-se à vontade para contribuir com este projeto. Siga os passos para contribuir.
      
