@@ -1,0 +1,11 @@
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/domain/service/UserService.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/api/dto/UserDTO.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/config/ModelMapperConfig.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/domain/exception/DataIntegratyViolationException.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/StarterKitApplication.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/domain/repository/UserRepository.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/api/controller/UserController.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/api/exceptionhandler/MessageExceptionHandler.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/api/exceptionhandler/UserControllerAdvice.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/domain/exception/UserNotFoundException.java
+/home/marcos/eclipse-workspace/starterkit-test/src/main/java/com/exemplo/starterkit/domain/model/User.java

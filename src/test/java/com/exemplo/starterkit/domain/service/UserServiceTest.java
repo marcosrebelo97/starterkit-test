@@ -5,7 +5,6 @@ import com.exemplo.starterkit.domain.exception.DataIntegratyViolationException;
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import com.exemplo.starterkit.domain.model.User;
 import com.exemplo.starterkit.domain.repository.UserRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +29,9 @@ class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private ModelMapper modelMapper;
 
     private User user;
     private UserDTO userDTO;
@@ -77,6 +78,7 @@ class UserServiceTest {
             userService.searchUserId(ID);
         } catch (Exception ex){
             assertEquals(UserNotFoundException.class, ex.getClass());
+            //assertEquals("Usuário não encontrado!", ex.getMessage());
         }
     }
     @Test
@@ -167,9 +169,9 @@ class UserServiceTest {
                 .thenThrow(new UserNotFoundException("Usuário não encontrado!"));
         try{
             userService.deleteUser(ID);
-        } catch (Exception exception){
-            assertEquals(UserNotFoundException.class, exception.getClass());
-            //assertEquals("Usuário não encontrado!", exception.getMessage());
+        } catch (Exception ex){
+            assertEquals(UserNotFoundException.class, ex.getClass());
+            //assertEquals("Usuário não encontrado!", ex.getMessage());
         }
     }
 

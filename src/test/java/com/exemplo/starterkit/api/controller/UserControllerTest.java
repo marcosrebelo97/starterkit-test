@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -98,6 +97,17 @@ class UserControllerTest {
         assertEquals(EMAIL, response.getBody().get(0).getEmail());
         assertEquals(CITY, response.getBody().get(0).getCity());
         assertEquals(CEP, response.getBody().get(0).getCep());
+    }
+
+    @Test
+    void whenCreate_Then_ReturnCreated(){
+        when(userService.createUser(any())).thenReturn(user);
+
+        ResponseEntity<User> response = userController.createUser(userDTO);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+
     }
 
 }
