@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_users")
 public class User {
@@ -29,16 +28,5 @@ public class User {
     @NotBlank
     private String city;
     private Integer cep;
-
-
-    //for test
-    public User(String name, Integer age, String email, String city, Integer cep){
-        this.name = name;
-        this.age = age;
-        this.email = email;
-        this.city = city;
-        this.cep = cep;
-    }
-
 
 }
