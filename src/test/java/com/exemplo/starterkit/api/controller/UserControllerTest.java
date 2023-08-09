@@ -106,6 +106,7 @@ class UserControllerTest {
         ResponseEntity<User> response = userController.createUser(userDTO);
 
         assertNotNull(response);
+        assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
     }
