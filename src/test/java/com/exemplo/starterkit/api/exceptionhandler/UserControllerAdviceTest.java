@@ -1,5 +1,6 @@
 package com.exemplo.starterkit.api.exceptionhandler;
 
+import com.exemplo.starterkit.domain.exception.DataIntegratyViolationException;
 import com.exemplo.starterkit.domain.exception.UserNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,22 @@ class UserControllerAdviceTest {
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(MessageExceptionHandler.class, response.getBody().getClass());
         assertEquals("Usuário não encontrado!", response.getBody().getMessage());
-        //assertEquals(404, response.getBody().getStatus());
+        assertEquals(404, response.getBody().getStatus());
+    }
+
+    @Test
+    void dataIntegrityViolationException(){
+        ResponseEntity<MessageExceptionHandler> response = userControllerAdvice
+                .dataIntegrityViolationNotFound(
+                        new DataIntegratyViolationException("E-mail já cadastrado!"),
+                        new MockHttpServletRequest());
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(MessageExceptionHandler.class, response.getBody().getClass());
+        assertEquals("E-mail já cadastrado!", response.getBody().getMessage());
+        assertEquals(400, response.getBody().getStatus());
 
     }
 

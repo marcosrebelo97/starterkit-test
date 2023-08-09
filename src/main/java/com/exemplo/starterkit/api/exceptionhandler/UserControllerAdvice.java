@@ -23,7 +23,7 @@ public class UserControllerAdvice {
 
     @ResponseBody
     @ExceptionHandler(DataIntegratyViolationException.class)
-    public ResponseEntity<MessageExceptionHandler> dataIntegratyViolationNotFound(DataIntegratyViolationException dataIntegratyViolationException) {
+    public ResponseEntity<MessageExceptionHandler> dataIntegrityViolationNotFound(DataIntegratyViolationException dataIntegratyViolationException, HttpServletRequest request) {
         MessageExceptionHandler error =
                 new MessageExceptionHandler(new Date(), HttpStatus.BAD_REQUEST.value(), "E-mail já cadastrado!");
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
