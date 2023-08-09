@@ -20,7 +20,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 @DataJpaTest
 class UserControllerTest {
@@ -130,6 +131,19 @@ class UserControllerTest {
         assertEquals(EMAIL, response.getBody().getEmail());
         assertEquals(CITY, response.getBody().getCity());
         assertEquals(CEP, response.getBody().getCep());
+    }
+
+    @Test
+    void whenDelete_ThenReturnSuccess(){
+        doNothing().when(userService).deleteUser(anyLong());
+
+        ResponseEntity<UserDTO> response = userController.deleteUser(ID);
+
+        assertNotNull(response);
+        assertEquals(ResponseEntity.class, response.getClass());
+
+        verify(userService, times(1)).deleteUser(ID);
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
 
 }
