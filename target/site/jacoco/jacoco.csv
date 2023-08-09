@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-starter-kit,com.exemplo.starterkit.api.exceptionhandler,MessageExceptionHandler,36,0,0,0,6,0,8,0,8,0
-starter-kit,com.exemplo.starterkit.api.exceptionhandler,UserControllerAdvice,34,3,0,0,6,1,2,1,2,1
+starter-kit,com.exemplo.starterkit.api.exceptionhandler,MessageExceptionHandler,18,18,0,0,3,3,5,3,5,3
+starter-kit,com.exemplo.starterkit.api.exceptionhandler,UserControllerAdvice,17,20,0,0,3,4,1,2,1,2
 starter-kit,com.exemplo.starterkit.domain.model,User,82,63,14,0,9,8,12,13,5,13
 starter-kit,com.exemplo.starterkit.domain.exception,DataIntegratyViolationException,3,0,0,0,2,0,1,0,1,0
 starter-kit,com.exemplo.starterkit.domain.exception,UserNotFoundException,0,3,0,0,0,2,0,1,0,1

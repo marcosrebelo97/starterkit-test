@@ -1,8 +1,11 @@
 # Pasta de compilação
-/target/
+target/
 
 #Arquivos gerados pela IDE
 .idea/
+*.iws
+*.iml
+*.ipr
 
 #Dependências geradas pelo Maven
 *.jar
