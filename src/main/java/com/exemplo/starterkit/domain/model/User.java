@@ -30,13 +30,6 @@ public class User {
     private String city;
     private Integer cep;
 
-    /*public User(UserDTO newUser) {
-        name = newUser.getName();
-        age = newUser.getAge();
-        email = newUser.getEmail();
-        city = newUser.getCity();
-        cep = newUser.getCep();
-    }*/
 
     //for test
     public User(String name, Integer age, String email, String city, Integer cep){

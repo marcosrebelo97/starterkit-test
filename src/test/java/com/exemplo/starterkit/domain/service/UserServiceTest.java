@@ -72,13 +72,14 @@ class UserServiceTest {
 
     @Test
     void whenFindById_Then_ReturnUserNotFound() {
-        when(userRepository.findById(Mockito.anyLong())).thenThrow(new UserNotFoundException("Usuário não encontrado!"));
+        when(userRepository.findById(Mockito.anyLong()))
+                .thenThrow(new UserNotFoundException("Usuário não encontrado!"));
 
         try{
             userService.searchUserId(ID);
         } catch (Exception ex){
-            assertEquals(UserNotFoundException.class, ex.getClass());
             //assertEquals("Usuário não encontrado!", ex.getMessage());
+            assertEquals(UserNotFoundException.class, ex.getClass());
         }
     }
     @Test
