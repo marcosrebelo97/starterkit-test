@@ -35,8 +35,8 @@ class UserControllerTest {
     @Mock
     private ModelMapper modelMapper;
 
-    private User user;
-    private UserDTO userDTO;
+    private User user = new User();
+    private UserDTO userDTO = new UserDTO();
     public static final String NAME     = "Marcos";
     public static final String EMAIL    = "marcos@gmail.com";
     public static final String CITY     = "Manaus";

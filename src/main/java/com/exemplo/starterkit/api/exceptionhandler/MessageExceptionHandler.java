@@ -7,9 +7,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class MessageExceptionHandler {
 
     private Date timestamp;
