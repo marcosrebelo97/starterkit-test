@@ -1,4 +1,4 @@
-package com.exemplo.starterkit.swagger;
+/*package com.exemplo.starterkit.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,4 +30,4 @@ public class SwaggerConfig {
                 .contact(new Contact("Marcos", "https://github.com/marcosrebelo97", "marcosrebelo9@gmail.com"))
                 .build();
     }
-}
+}*/
