@@ -23,7 +23,9 @@
 
 ### Cobertura de Código:
   - Nesta etapa foi utilizado o **[Jacoco](https://www.eclemma.org/jacoco/)**, que gera relatórios detalhados que mostram a porcentagem de cobertura de código para diferentes partes do projeto, como classes, métodos e linhas de código. No plugin adicionado no arquivo `pom.xml` pode ser definido o limite de porcentagem a ser atingido pelo código.
-  - No caso abaixo, as classes dos pacotes Model e DTO não atingiram o limite por conta das anotações @ feitas no código que complementam outras etapas (endpoints) importantes, por exemplo construtores vazios, setters e outros.
+  - No caso abaixo, as classes dos pacotes Model e DTO não atingiram um limite razoável (> 70%) por conta das anotações @ feitas no código que complementam outras etapas (endpoints) importantes, por exemplo construtores vazios, setters e outros.
+
+    > Obs: Se você conhece alguma melhoria p/ esse caso, entre em contato ou faça uma contribuição seguindo os passos abaixo.     
 
     ![image](https://github.com/marcosrebelo97/starterkit-test/assets/37541973/4483fb5d-f047-4699-ac2e-98835571a972)
 
