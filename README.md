@@ -37,7 +37,7 @@
 
 ### Implantação
   - Para exercitar a prática de processo de deploy na nuvem, foi utilizado o [Raiway](https://railway.app/)
-  - URL de acesso: [Clique aqui](https://starterkit-test-production.up.railway.app/users)
+  - URL de acesso: [https://starterkit-test-production.up.railway.app/users](https://starterkit-test-production.up.railway.app/users)
 
 ### Contribuindo:
   - Se você tiver algum feedback, melhorias possíveis, correção de bugs ou deseja adicionar novos testes, sinta-se à vontade para contribuir com este projeto. Siga os passos para contribuir.
