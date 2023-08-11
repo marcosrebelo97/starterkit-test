@@ -29,6 +29,12 @@
 
     ![image](https://github.com/marcosrebelo97/starterkit-test/assets/37541973/4483fb5d-f047-4699-ac2e-98835571a972)
 
+### Documentação
+  - Nesta etapa tão importante, a ferramenta utilizada para documentar foi Swagger.
+    
+    ![image](https://github.com/marcosrebelo97/starterkit-test/assets/37541973/d42d7396-c7ea-4f8b-b685-88c29d02747b)
+
+
 ### Implantação
   - Para exercitar a prática de processo de deploy na nuvem, foi utilizado o [Raiway](https://railway.app/)
   - URL de acesso: [Clique aqui](https://starterkit-test-production.up.railway.app/users)
