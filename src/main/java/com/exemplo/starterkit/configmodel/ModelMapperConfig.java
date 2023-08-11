@@ -1,4 +1,4 @@
-package com.exemplo.starterkit.config;
+package com.exemplo.starterkit.configmodel;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
