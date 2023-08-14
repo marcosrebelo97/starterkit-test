@@ -39,6 +39,17 @@
   - Para exercitar a prática de processo de deploy na nuvem, foi utilizado o [Raiway](https://railway.app/)
   - URL de acesso: [https://starterkit-test-production.up.railway.app/users](https://starterkit-test-production.up.railway.app/users)
 
+### Tecnologias Utilizadas
+  - Java (JDK 17)
+  - Spring Boot
+  - Spring Data JPA / Hibernate
+  - Maven
+  - H2 Database
+  - JUnit
+  - Flyway
+  - PostgreSQL | DBeaver
+  - Postman
+
 ### Contribuindo:
   - Se você tiver algum feedback, melhorias possíveis, correção de bugs ou deseja adicionar novos testes, sinta-se à vontade para contribuir com este projeto. Siga os passos para contribuir.
      
@@ -63,11 +74,6 @@
        ```
      
   9. Abra um Pull Request para este repositório, descrevendo suas altrações e explicando o motivo da contribuição.
-
-### Material de Apoio:
-  - [Documentação do JUnit](https://junit.org/junit5/docs/current/user-guide/)
-  - [Documentação do Mockito](https://site.mockito.org/)
-  - [Spring Boot Test - Documentação Oficial](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing)
 
 ### Licença:
   - Este projeto está licenciado sob a [MIT License](https://opensource.org/license/mit/). 
