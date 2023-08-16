@@ -46,7 +46,7 @@
   - Maven
   - H2 Database
   - JUnit
-  - Flyway
+  - Deploy CI/CD no Railway
   - PostgreSQL | DBeaver
   - Postman
 
